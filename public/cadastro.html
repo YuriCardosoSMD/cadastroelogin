@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro - Sistema de Inventário</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* Configurações Globais e de Fonte */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f0f2f5;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        /* Estilo do Container Principal */
+        .form-container {
+            background-color: #ffffff;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 400px;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: #1c1c1c;
+        }
+
+        .subtitle {
+            font-size: 16px;
+            color: #666;
+            margin-bottom: 30px;
+        }
+
+        /* Grupo de Label e Input */
+        .input-group {
+            text-align: left;
+            margin-bottom: 20px;
+        }
+
+        .input-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            font-size: 14px;
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+
+        .input-group input:focus {
+            outline: none;
+            border-color: #007bff;
+            box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
+        }
+
+        /* Botão Principal */
+        .btn {
+            width: 100%;
+            padding: 12px;
+            background-color: #007bff;
+            color: #ffffff;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        .btn:hover {
+            background-color: #0056b3;
+        }
+
+        /* Links */
+        .link {
+            display: inline-block;
+            margin-top: 15px;
+            color: #007bff;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .link:hover {
+            text-decoration: underline;
+        }
+
+        /* Linha separadora */
+        .separator {
+            height: 1px;
+            background-color: #eee;
+            margin: 25px 0 10px 0;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="cadastro-container" class="form-container">
+        <!-- FORMULÁRIO DE CADASTRO -->
+        <form id="cadastro-form" action="/cadastro" method="POST">
+            <h1>Crie sua Conta</h1>
+            <p class="subtitle">Preencha os dados para se cadastrar.</p>
+            
+            <div class="input-group">
+                <label for="usuario">Nome de Usuário</label>
+                <input type="text" id="usuario" name="usuario" required>
+            </div>
+
+            <div class="input-group">
+                <label for="senha">Senha</label>
+                <input type="password" id="senha" name="senha" required>
+            </div>
+
+            <div class="input-group">
+                <label for="confirmarSenha">Repita a Senha</label>
+                <input type="password" id="confirmarSenha" name="confirmarSenha" required>
+            </div>
+            
+            <button type="submit" class="btn">Cadastrar</button>
+            
+            <div class="separator"></div>
+
+            <a href="login.html" class="link">Já tem uma conta? Faça o login</a>
+        </form>
+    </div>
+
+    <script>
+        // Validação de senha antes de enviar o formulário
+        document.getElementById('cadastro-form').addEventListener('submit', function(event) {
+            const senha = document.getElementById('senha').value;
+            const confirmarSenha = document.getElementById('confirmarSenha').value;
+
+            if (senha !== confirmarSenha) {
+                event.preventDefault(); // Impede o envio
+                alert('As senhas não coincidem. Por favor, tente novamente.');
+            }
+        });
+    </script>
+</body>
+</html>
